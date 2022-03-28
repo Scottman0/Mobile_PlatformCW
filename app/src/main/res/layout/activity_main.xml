@@ -1,0 +1,27 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:id="@+id/salutation" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="20sp" android:text="Welcome to Mobile Platform Development Assignment 2021-2022"/>
+
+        <Button
+            android:id="@+id/currentIncidentsButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Current Incidents" />
+
+        <Button
+            android:id="@+id/plannedRoadworksButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Planned Roadworks" />
+
+        <Button
+            android:id="@+id/currentRoadworksButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get Current Roadworks" />
+
+        <TextView android:id="@+id/acknowledgement" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="20sp" android:text="Contains Traffic Scotland Data"/>
+        <TextView android:id="@+id/rawDataDisplay" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="20sp" android:text="Raw Data is Displayed here"/>
+    </LinearLayout>
+</ScrollView>
