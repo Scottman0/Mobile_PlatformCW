@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Blair_Scott_S2029064_TrafficScotlandAssignment">
         <activity
-            android:name=".MainActivity"
+            android:name=".models.MainActivity"
             android:exported="true" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
