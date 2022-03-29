@@ -1,5 +1,6 @@
-package com.example.blair_scott_s2029064_trafficscotlandassignment;
 // Scott Blair (2022) -- Student ID: S2029064
+package com.example.blair_scott_s2029064_trafficscotlandassignment;
+
 // Import required libraries
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
