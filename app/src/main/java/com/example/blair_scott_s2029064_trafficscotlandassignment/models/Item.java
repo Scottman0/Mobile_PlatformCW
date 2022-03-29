@@ -1,6 +1,7 @@
 package com.example.blair_scott_s2029064_trafficscotlandassignment.models;
 
-public class CurrentRoadworks {
+public class Item {
+    private String category;
     private String title;
     private String description;
     private String link;
@@ -10,6 +11,7 @@ public class CurrentRoadworks {
     // Constructors
     public void CurrentRoadworks()
     {
+        category = "";
         title = "";
         description = "";
         link = "";
@@ -17,6 +19,12 @@ public class CurrentRoadworks {
     }
 
     // Getters
+    public String getCategory()
+    {
+        System.out.println("Category: " + category);
+        return category;
+    }
+
     public String getTitle()
     {
         System.out.println("Title: " + title);
@@ -48,6 +56,12 @@ public class CurrentRoadworks {
     }
 
     // Setters
+    public void setCategory(String category)
+    {
+        this.category = category;
+        System.out.println("Category set to " + category);
+    }
+
     public void setTitle(String title)
     {
         this.title = title;
