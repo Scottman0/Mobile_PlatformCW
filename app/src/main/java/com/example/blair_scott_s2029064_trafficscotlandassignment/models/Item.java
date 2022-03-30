@@ -10,7 +10,7 @@ public class Item {
     private String pubDate;
 
     // Constructors
-    public void CurrentRoadworks()
+    public Item()
     {
         category = "";
         title = "";
@@ -19,40 +19,58 @@ public class Item {
         location = "";
     }
 
+    public Item(String category, String title, String description, String link, String pubDate)
+    {
+        this.category = category;
+        this.title = title;
+        this.description = description;
+        this.link = link;
+        this.pubDate = pubDate;
+    }
+
+    public Item(String title, String description, String link, String pubDate)
+    {
+        this.category = category;
+        this.title = title;
+        this.description = description;
+        this.link = link;
+        this.pubDate = pubDate;
+    }
+
     // Getters
     public String getCategory()
     {
-        System.out.println("Category: " + category);
+        //System.out.println("Category: " + category);
         return category;
     }
 
     public String getTitle()
     {
-        System.out.println("Title: " + title);
+        //System.out.println("Title: " + title);
         return title;
     }
 
     public String getDescription()
     {
-        System.out.println("Description: " + description);
+        //System.out.println("Description: " + description);
         return description;
     }
 
     public String getLink()
     {
-        System.out.println("Link: " + link);
+        //System.out.println("Link: " + link);
         return link;
     }
 
     public String getLocation()
     {
-        System.out.println("Location: " + location);
+        //System.out.println("Location: " + location);
         return location;
     }
 
     public String getPubDate()
     {
-        System.out.println("Pub Date: " + pubDate);
+        //System.out.println("Pub Date: " + pubDate);
         return pubDate;
     }
 

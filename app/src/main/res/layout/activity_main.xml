@@ -5,29 +5,35 @@
     android:layout_width="fill_parent" android:layout_height="fill_parent">
     <LinearLayout
         android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:id="@+id/salutation" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="20sp" android:text="Welcome to Mobile Platform Development Assignment 2021-2022"/>
 
-        <TextView android:id="@+id/acknowledgement" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="20sp" android:text="Contains Traffic Scotland Data"/>
-        <TextView android:id="@+id/rawDataDisplay" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="20sp" android:text="Raw Data is Displayed here"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:hint="Search"
+            android:singleLine="true" />
 
-        <!-- A CardView that contains a TextView -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view"
-            android:layout_width="409dp"
-            android:layout_height="118dp"
-            android:layout_gravity="center"
-            card_view:cardBackgroundColor="#25C4DA"
-            card_view:cardCornerRadius="8dp">
+        <Button
+            android:id="@+id/currentRoadworksBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current Roadworks" />
 
-            <TextView
-                android:id="@+id/info_text"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:text="test"
-                android:padding="2dp"
-                />
+        <Button
+            android:id="@+id/plannedRoadworksBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Planned Roadworks" />
 
-        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/currentIncidentsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current Incidents" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="685dp" />
 
     </LinearLayout>
 </ScrollView>
