@@ -6,13 +6,26 @@
     <LinearLayout
         android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+            android:layout_width="600dp"
             android:layout_height="70dp"
             android:hint="Search"
             android:singleLine="true" />
 
-    <LinearLayout
+        <Button
+            android:id="@+id/searchBtnLandscape"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+        </LinearLayout>
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
