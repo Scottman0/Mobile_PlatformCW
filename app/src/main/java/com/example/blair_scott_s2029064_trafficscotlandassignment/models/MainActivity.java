@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         parser.startCurrentIncidentsProgress(); // start parsing current incidents first on create which when complete
                                                 // will parse planned roadworks and then finally current roadworks;
 
-        // Set up the raw links to the graphical components
-        //rawDataDisplay = (TextView) findViewById(R.id.rawDataDisplay);
+          // Set up the raw links to the graphical components
+          //rawDataDisplay = (TextView) findViewById(R.id.rawDataDisplay);
 
           plannedRoadworksBtn = (Button) findViewById(R.id.plannedRoadworksBtn);
           plannedRoadworksBtn.setOnClickListener(this);

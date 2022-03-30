@@ -7,7 +7,7 @@
 
     <EditText
         android:id="@+id/card_name"
-        android:layout_width="280dp"
+        android:layout_width="560dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/card_description"
-        android:layout_width="280dp"
+        android:layout_width="560dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
@@ -33,7 +33,7 @@
 
     <EditText
         android:id="@+id/card_link"
-        android:layout_width="280dp"
+        android:layout_width="560dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
@@ -46,7 +46,7 @@
 
     <EditText
         android:id="@+id/card_pubDate"
-        android:layout_width="280dp"
+        android:layout_width="560dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="12dp"
