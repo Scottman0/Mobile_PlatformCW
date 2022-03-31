@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Scott Blair (2022) - Student ID: S2029064 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.blair_scott_s2029064_trafficscotlandassignment">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Blair_Scott_S2029064_TrafficScotlandAssignment">
+        android:theme="@style/Theme.Blair_Scott_S2029064_TrafficScotlandAssignment"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".models.DetailedView"
+            android:exported="false" />
         <activity
             android:name=".models.MainActivity"
             android:exported="true" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

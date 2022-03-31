@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,27 +40,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.activity_main);
         Log.e("MyTag", "in onCreate");
 
-
         parser.startCurrentIncidentsProgress(); // start parsing current incidents first on create which when complete
-                                                // will parse planned roadworks and then finally current roadworks;
+        // will parse planned roadworks and then finally current roadworks;
 
-          // Set up the raw links to the graphical components
-          //rawDataDisplay = (TextView) findViewById(R.id.rawDataDisplay);
+        // Set up the raw links to the graphical components
+        //rawDataDisplay = (TextView) findViewById(R.id.rawDataDisplay);
 
-          plannedRoadworksBtn = (Button) findViewById(R.id.plannedRoadworksBtn);
-          plannedRoadworksBtn.setOnClickListener(this);
-          currentRoadworksBtn = (Button) findViewById(R.id.currentRoadworksBtn);
-          currentRoadworksBtn.setOnClickListener(this);
-          currentIncidentsBtn = (Button) findViewById(R.id.currentIncidentsBtn);
-          currentIncidentsBtn.setOnClickListener(this);
+        plannedRoadworksBtn = (Button) findViewById(R.id.plannedRoadworksBtn);
+        plannedRoadworksBtn.setOnClickListener(this);
+        currentRoadworksBtn = (Button) findViewById(R.id.currentRoadworksBtn);
+        currentRoadworksBtn.setOnClickListener(this);
+        currentIncidentsBtn = (Button) findViewById(R.id.currentIncidentsBtn);
+        currentIncidentsBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         Log.e("MyTag", "in onClick");
         int id = v.getId();
-        switch (id)
-        {
+        switch (id) {
             case R.id.plannedRoadworksBtn:
                 getItems("plannedRoadworks");
                 break;
@@ -73,13 +72,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Log.e("MyTag", "after startProgress");
     }
 
-    public void getItems(String itemsToGet)
-    {
+    public void getItems(String itemsToGet) {
         Window w = getWindow();
-        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         RecyclerView recyclerView = findViewById(R.id.rv_list);
-        switch(itemsToGet)
-        {
+
+        switch (itemsToGet) {
             case "currentRoadworks":
                 List<Item> currentRoadworksList = parser.currentRoadworks;
                 Adapter adapter1 = new Adapter(this, currentRoadworksList);
@@ -99,12 +97,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 recyclerView.setLayoutManager(new LinearLayoutManager((this)));
                 break;
         }
-        // setup RecyclerView with the Adapter
-
-
-
-
-
-
     }
 }
+

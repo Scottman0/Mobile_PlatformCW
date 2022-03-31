@@ -27,6 +27,7 @@ public class Parser extends AppCompatActivity {
     boolean dataParsed = false;
     int currentUrl = 1; // value to store which URL we are parsing data from
 
+
     List<Item> items = new ArrayList<Item>();
     Item item = new Item();
 
@@ -134,6 +135,10 @@ public class Parser extends AppCompatActivity {
                         } else if (xpp.getName().equalsIgnoreCase("description") && xpp.getDepth() == 4) {
                             String temp = xpp.nextText();
                             item.setDescription(temp);
+                        } else if (xpp.getName().equalsIgnoreCase("point") && xpp.getDepth() == 4) {
+                            String temp = xpp.nextText();
+                            item.setLocation(temp);
+                            System.out.println("Parser location set to " + temp);
                         } else if (xpp.getName().equalsIgnoreCase("link") && xpp.getDepth() == 4) {
                             String temp = xpp.nextText();
                             item.setLink(temp);
