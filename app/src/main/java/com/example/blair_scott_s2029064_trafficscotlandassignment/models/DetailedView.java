@@ -2,11 +2,7 @@
 package com.example.blair_scott_s2029064_trafficscotlandassignment.models;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.blair_scott_s2029064_trafficscotlandassignment.R;
@@ -21,7 +17,8 @@ public class DetailedView extends AppCompatActivity {
         TextView descriptionTxt = findViewById(R.id.detailedViewDescription);
         TextView linkTxt = findViewById(R.id.detailedViewLink);
         TextView pubDateTxt = findViewById(R.id.detailedViewPubDate);
-        TextView locationTxt = findViewById(R.id.detailedViewLocation);
+        TextView latitudeTxt = findViewById(R.id.detailedViewLatitude);
+        TextView longitudeTxt = findViewById(R.id.detailedViewLongitude);
 
         String title = "Title not set";
         String category = "Category not set";
@@ -29,6 +26,8 @@ public class DetailedView extends AppCompatActivity {
         String link = "Link not set";
         String pubDate = "pubDate not set";
         String location = "Location not set";
+        String latitude = "Latitude not set";
+        String longitude = "Longitude not set";
 
         Bundle extras = getIntent().getExtras();
         if (extras != null)
@@ -39,6 +38,8 @@ public class DetailedView extends AppCompatActivity {
             link = extras.getString("link");
             pubDate = extras.getString("pubDate");
             location = extras.getString("location");
+            latitude = extras.getString("latitude");
+            longitude = extras.getString("longitude");
         }
 
         titleTxt.setText("Title: " + title);
@@ -59,7 +60,9 @@ public class DetailedView extends AppCompatActivity {
         descriptionTxt.setText("Description: " + description);
         linkTxt.setText("Link: " + link);
         pubDateTxt.setText("Publication Date: " + pubDate);
-        locationTxt.setText("Location: " + location);
+        latitudeTxt.setText("Latitude: " + latitude);
+        longitudeTxt.setText("Longitude: " + longitude);
+        System.out.println(latitude);
+        System.out.println(longitude);
     }
-
     }

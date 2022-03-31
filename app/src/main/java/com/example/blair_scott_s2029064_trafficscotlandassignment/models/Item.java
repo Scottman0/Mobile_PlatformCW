@@ -8,6 +8,7 @@ public class Item {
     private String link;
     private String location; // map coordinates
     private String pubDate;
+    private String coords[];
 
     // Constructors
     public Item()
@@ -66,6 +67,18 @@ public class Item {
     {
         //System.out.println("Location: " + location);
         return location;
+    }
+
+    public String getLatitude()
+    {
+        coords = location.split(" ");
+        return coords[0];
+    }
+
+    public String getLongitude()
+    {
+        coords = location.split(" ");
+        return coords[1];
     }
 
     public String getPubDate()

@@ -68,6 +68,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
                     intent.putExtra("link", mData.get(id).getLink());
                     intent.putExtra("pubDate", mData.get(id).getPubDate());
                     intent.putExtra("location", mData.get(id).getLocation());
+                    intent.putExtra("latitude", mData.get(id).getLatitude());
+                    intent.putExtra("longitude", mData.get(id).getLongitude());
                     mContext.startActivity(intent);
                     System.out.println(mData.get(getAdapterPosition()).getTitle());
                 }
