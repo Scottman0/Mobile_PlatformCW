@@ -16,8 +16,12 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import com.example.blair_scott_s2029064_trafficscotlandassignment.R;
 import com.example.blair_scott_s2029064_trafficscotlandassignment.models.MainActivity;
 
@@ -27,6 +31,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     Context mContext;
     List<Item> mData;
     MainActivity main = new MainActivity();
+    Date todaysDate = new Date();
 
     public Adapter(Context mContext, List<Item> mData)
     {
@@ -44,19 +49,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         holder.tv_title.setText("Title: " + mData.get(position).getTitle());
-        holder.tv_pubDate.setText("Date: " + mData.get(position).getFormattedPubDate());
+        holder.tv_pubDate.setText("Date Posted: " + mData.get(position).getFormattedPubDate());
 
         if (mData.get(position).getEndDate() != null && mData.get(position).getStartDate() != null)
         {
-            long daysBetween = mData.get(position).getEndDate().getTime() - mData.get(position).getStartDate().getTime();
-            int daysBetweenInt = (int) (daysBetween/1000/60/60/24);
-            if (daysBetweenInt < 3)
+            long daysRemaining = todaysDate.getTime() - mData.get(position).getEndDate().getTime();
+            int daysRemainingInt = (int) (daysRemaining/1000/60/60/24);
+            daysRemainingInt = Math.abs(daysRemainingInt);
+            if (daysRemainingInt < 3)
             {
-                holder.itemView.setBackgroundColor(Color.parseColor("#fc746d"));
-            } else if (daysBetweenInt > 2 && daysBetweenInt < 7) {
-                holder.itemView.setBackgroundColor(Color.parseColor("#f2ac72"));
-            } else if (daysBetweenInt > 6) {
                 holder.itemView.setBackgroundColor(Color.parseColor("#00ff08"));
+            } else if (daysRemainingInt > 2 && daysRemainingInt < 7) {
+                holder.itemView.setBackgroundColor(Color.parseColor("#f2ac72"));
+            } else if (daysRemainingInt > 6) {
+                holder.itemView.setBackgroundColor(Color.parseColor("#fc746d"));
             }
         }
     }
@@ -91,9 +97,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
                     if (mData.get(id).getStartDate() != null && mData.get(id).getEndDate() != null) {
                         intent.putExtra("startDate", mData.get(id).getStartDate().toString());
                         intent.putExtra("endDate", mData.get(id).getEndDate().toString());
+                        // calculate the number of days a roadwork was planned to last and the number of days remaining
                         long daysBetween = mData.get(id).getEndDate().getTime() - mData.get(id).getStartDate().getTime();
                         int daysBetweenInt = (int) (daysBetween/1000/60/60/24);
+                        long daysRemaining = todaysDate.getTime() - mData.get(id).getEndDate().getTime();
+                        int daysRemainingInt = (int) (daysRemaining/1000/60/60/24);
+                        daysRemainingInt = Math.abs(daysRemainingInt);
+                        System.out.println("Days Remaining: " + daysRemainingInt);
                         intent.putExtra("daysBetween", daysBetweenInt);
+                        intent.putExtra("daysRemaining", daysRemainingInt);
                     }
                     intent.putExtra("detailedInfo", mData.get(id).getDetailedInfo());
                     mContext.startActivity(intent);

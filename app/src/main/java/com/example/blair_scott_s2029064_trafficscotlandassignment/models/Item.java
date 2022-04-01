@@ -21,11 +21,8 @@ public class Item {
     private Date endDate;
     private long daysBetween;
 
-    private SimpleDateFormat dateOutFormat =
-            new SimpleDateFormat("EEEE h:mm a (MMM d)");   // Only includes date, not time
-
-    private SimpleDateFormat dateInFormat =
-            new SimpleDateFormat("EEE, dd MMM yyyy");     // Only includes date, not time
+    private SimpleDateFormat dateFormat =
+            new SimpleDateFormat("EEE, dd MMM yyyy"); // formatting date
 
     // Constructors
     public Item()
@@ -108,8 +105,8 @@ public class Item {
     {
         try {
             if (pubDate != null) {              // make sure pubDate exists
-                Date date = dateInFormat.parse(pubDate);
-                String pubDateFormatted = dateInFormat.format(date);
+                Date date = dateFormat.parse(pubDate);
+                String pubDateFormatted = dateFormat.format(date);
                 return pubDateFormatted;
             }
             else {

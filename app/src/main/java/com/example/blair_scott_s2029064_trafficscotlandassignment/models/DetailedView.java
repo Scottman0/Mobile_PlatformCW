@@ -35,6 +35,7 @@ public class DetailedView extends AppCompatActivity {
         String endDate = "End Date not set";
         String detailedInfo = "Detailed info not set";
         int daysBetween = 0;
+        int daysRemaining = 0;
 
         Bundle extras = getIntent().getExtras();
         if (extras != null)
@@ -51,6 +52,7 @@ public class DetailedView extends AppCompatActivity {
             endDate = extras.getString("endDate");
             detailedInfo = extras.getString("detailedInfo");
             daysBetween = extras.getInt("daysBetween");
+            daysRemaining = extras.getInt("daysRemaining");
         }
 
         titleTxt.setText("Title: " + title);
@@ -60,19 +62,22 @@ public class DetailedView extends AppCompatActivity {
         {
             case "currentRoadworks":
                 categoryTxt.setText("Category: Current Roadworks");
+                descriptionTxt.setText("Description: " + detailedInfo);
                 break;
             case "plannedRoadworks":
                 categoryTxt.setText("Category: Planned Roadworks");
+                descriptionTxt.setText("Description: " + detailedInfo);
                 break;
             case "currentIncidents":
                 categoryTxt.setText("Category: Current Incidents");
+                descriptionTxt.setText("Description: " + description);
                 break;
         }
 
-        descriptionTxt.setText("Description: " + detailedInfo);
+
         linkTxt.setText("Link: " + link);
         if (startDate != null & endDate != null) {
-            pubDateTxt.setText("Dates: " + startDate + " to " + endDate);
+            pubDateTxt.setText("Dates: " + startDate + " to " + endDate + "\n - days remaining (approximate): " + daysRemaining);
         } else {
             pubDateTxt.setText("Published Date: " + pubDate);
         }
