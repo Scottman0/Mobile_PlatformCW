@@ -15,6 +15,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import com.example.blair_scott_s2029064_trafficscotlandassignment.models.MainActivity;
 

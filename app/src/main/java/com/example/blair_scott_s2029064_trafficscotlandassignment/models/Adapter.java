@@ -58,7 +58,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
             } else if (daysBetweenInt > 6) {
                 holder.itemView.setBackgroundColor(Color.parseColor("#00ff08"));
             }
-
         }
     }
 

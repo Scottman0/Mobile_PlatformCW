@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.example.blair_scott_s2029064_trafficscotlandassignment.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -71,6 +73,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                     if(parser.items.get(i).getTitle().toLowerCase().contains(searchValue) || parser.items.get(i).getFormattedPubDate().toLowerCase().contains(searchValue))
                     {
                         searchedRoadworks.add(parser.items.get(i));
+
+                        // sort searched results by most recent pub date
+                        Collections.sort(searchedRoadworks, new Comparator<Item>() {
+                            public int compare(Item item, Item t1) {
+                                return item.getStartDate().compareTo(t1.getStartDate());
+                            }
+                        });
+
                         System.out.println("Searched Tag: " + searchValue);
                         getItems("searchedRoadworks");
 
@@ -106,6 +116,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         switch (itemsToGet) {
             case "currentRoadworks":
                 List<Item> currentRoadworksList = parser.currentRoadworks;
+                Collections.sort(currentRoadworksList, new Comparator<Item>() {
+                    public int compare(Item item, Item t1) {
+                        return item.getStartDate().compareTo(t1.getStartDate());
+                    }
+                });
                 Adapter adapter1 = new Adapter(this, currentRoadworksList);
                 recyclerView.setAdapter(adapter1);
                 recyclerView.setLayoutManager(new LinearLayoutManager((this)));
@@ -118,6 +133,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 break;
             case "plannedRoadworks":
                 List<Item> plannedRoadworksList = parser.plannedRoadworks;
+                Collections.sort(plannedRoadworksList, new Comparator<Item>() {
+                    public int compare(Item item, Item t1) {
+                        return item.getStartDate().compareTo(t1.getStartDate());
+                    }
+                });
                 Adapter adapter3 = new Adapter(this, plannedRoadworksList);
                 recyclerView.setAdapter(adapter3);
                 recyclerView.setLayoutManager(new LinearLayoutManager((this)));
