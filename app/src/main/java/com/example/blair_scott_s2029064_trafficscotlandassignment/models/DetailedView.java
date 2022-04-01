@@ -1,8 +1,11 @@
 // Scott Blair (2022) -- Student ID: S2029064
 package com.example.blair_scott_s2029064_trafficscotlandassignment.models;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.TextView;
 
 import com.example.blair_scott_s2029064_trafficscotlandassignment.R;
@@ -28,6 +31,10 @@ public class DetailedView extends AppCompatActivity {
         String location = "Location not set";
         String latitude = "Latitude not set";
         String longitude = "Longitude not set";
+        String startDate = "Start Date not set";
+        String endDate = "End Date not set";
+        String detailedInfo = "Detailed info not set";
+        int daysBetween = 0;
 
         Bundle extras = getIntent().getExtras();
         if (extras != null)
@@ -40,10 +47,15 @@ public class DetailedView extends AppCompatActivity {
             location = extras.getString("location");
             latitude = extras.getString("latitude");
             longitude = extras.getString("longitude");
+            startDate = extras.getString("startDate");
+            endDate = extras.getString("endDate");
+            detailedInfo = extras.getString("detailedInfo");
+            daysBetween = extras.getInt("daysBetween");
         }
 
         titleTxt.setText("Title: " + title);
 
+        // get category name to display in view
         switch (category)
         {
             case "currentRoadworks":
@@ -57,12 +69,19 @@ public class DetailedView extends AppCompatActivity {
                 break;
         }
 
-        descriptionTxt.setText("Description: " + description);
+        descriptionTxt.setText("Description: " + detailedInfo);
         linkTxt.setText("Link: " + link);
-        pubDateTxt.setText("Publication Date: " + pubDate);
+        if (startDate != null & endDate != null) {
+            pubDateTxt.setText("Dates: " + startDate + " to " + endDate);
+        } else {
+            pubDateTxt.setText("Published Date: " + pubDate);
+        }
         latitudeTxt.setText("Latitude: " + latitude);
         longitudeTxt.setText("Longitude: " + longitude);
         System.out.println(latitude);
         System.out.println(longitude);
+        System.out.println("Days: " + daysBetween);
+
+
     }
     }

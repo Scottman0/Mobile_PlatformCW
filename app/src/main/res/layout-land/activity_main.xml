@@ -13,6 +13,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchTxt"
             android:layout_width="600dp"
             android:layout_height="70dp"
             android:hint="Search"

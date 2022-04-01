@@ -17,19 +17,25 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.example.blair_scott_s2029064_trafficscotlandassignment.R;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
     private TextView rawDataDisplay;
     private Button plannedRoadworksBtn;
     private Button currentRoadworksBtn;
     private Button currentIncidentsBtn;
+    private Button searchBtn;
+    private String searchValue;
     private String result = "";
+    List<Item> searchedRoadworks = new ArrayList<Item>();
 
     // Traffic Scotland Roadworks XML links
     private String urlCurrentIncidentsSource = "https://trafficscotland.org/rss/feeds/currentincidents.aspx";
     private String urlPlannedRoadworksSource = "https://trafficscotland.org/rss/feeds/plannedroadworks.aspx";
     private String urlCurrentRoadworksSource = "https://trafficscotland.org/rss/feeds/roadworks.aspx";
+
     int currentUrl = 1; // value to store which URL we are parsing data from
 
     Parser parser = new Parser(); // our class containing everything related to the XMLPullParser
@@ -52,6 +58,26 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         currentRoadworksBtn.setOnClickListener(this);
         currentIncidentsBtn = (Button) findViewById(R.id.currentIncidentsBtn);
         currentIncidentsBtn.setOnClickListener(this);
+        TextView searchTxt = findViewById(R.id.searchTxt);
+        searchBtn = (Button) findViewById(R.id.searchBtn);
+        // when search button pressed loop through the items array from parser and get all items matching search value using a list
+        searchBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Search: " + searchTxt.getText());
+                searchValue = searchTxt.getText().toString().toLowerCase();
+                searchedRoadworks.clear();
+                for (int i = 0; i < parser.items.size(); i++) {
+                    if(parser.items.get(i).getTitle().toLowerCase().contains(searchValue) || parser.items.get(i).getFormattedPubDate().toLowerCase().contains(searchValue))
+                    {
+                        searchedRoadworks.add(parser.items.get(i));
+                        System.out.println("Searched Tag: " + searchValue);
+                        getItems("searchedRoadworks");
+
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -96,6 +122,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 recyclerView.setAdapter(adapter3);
                 recyclerView.setLayoutManager(new LinearLayoutManager((this)));
                 break;
+            case "searchedRoadworks":
+                Adapter adapter4 = new Adapter(this, searchedRoadworks);
+                recyclerView.setAdapter(adapter4);
+                recyclerView.setLayoutManager(new LinearLayoutManager((this)));
+                break;
+
         }
     }
 }

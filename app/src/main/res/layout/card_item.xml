@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="240dp">
+    android:layout_height="240dp"
+    android:background="#D1CECE">
 
     <EditText
         android:id="@+id/card_name"
@@ -11,7 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
+        android:clickable="false"
         android:ems="10"
+        android:enabled="false"
+        android:textColor="#000000"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,39 +24,29 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/card_description"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_name"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
         android:id="@+id/card_pubDate"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="19dp"
+        android:clickable="false"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="PubDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_description"
+        app:layout_constraintTop_toBottomOf="@+id/card_name"
+        android:enabled="false"
+        android:textColor="#000000"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/card_details"
         android:layout_width="380dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="184dp"
-        android:layout_marginEnd="28dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="112dp"
         android:text="Detailed View"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
