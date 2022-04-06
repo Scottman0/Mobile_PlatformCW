@@ -55,7 +55,6 @@ public class DetailedView extends AppCompatActivity {
             daysRemaining = extras.getInt("daysRemaining");
         }
 
-
         ConstraintLayout constraint = (ConstraintLayout)findViewById(R.id.constraintLayoutColour);
 
         // get category name to display in view
@@ -95,7 +94,25 @@ public class DetailedView extends AppCompatActivity {
                 latitudeTxt.setTextColor(Color.BLACK);
                 longitudeTxt.setTextColor(Color.BLACK);
                 pubDateTxt.setTextColor(Color.BLACK);
-
+                break;
+            case "searchedRoadworks":
+                if (daysRemaining < 3)
+                {
+                    constraint.setBackgroundColor(Color.parseColor("#00ff08"));
+                } else if (daysRemaining > 2 && daysRemaining < 7) {
+                    constraint.setBackgroundColor(Color.parseColor("#f2ac72"));
+                } else if (daysRemaining > 6) {
+                    constraint.setBackgroundColor(Color.parseColor("#fc746d"));
+                }
+                categoryTxt.setText("Category: Current Incidents");
+                descriptionTxt.setText("Description: " + description);
+                titleTxt.setTextColor(Color.BLACK);
+                descriptionTxt.setTextColor(Color.BLACK);
+                categoryTxt.setTextColor(Color.BLACK);
+                linkTxt.setTextColor(Color.BLACK);
+                latitudeTxt.setTextColor(Color.BLACK);
+                longitudeTxt.setTextColor(Color.BLACK);
+                pubDateTxt.setTextColor(Color.BLACK);
                 break;
         }
 
