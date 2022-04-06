@@ -5,9 +5,8 @@ package com.example.blair_scott_s2029064_trafficscotlandassignment.models;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -48,11 +47,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.activity_main);
         Log.e("MyTag", "in onCreate");
 
-        parser.startCurrentIncidentsProgress(); // start parsing current incidents first on create which when complete
-        // will parse planned roadworks and then finally current roadworks;
+        // enable buttons after 9 seconds (allow time for data to be parsed)
+        new Handler().postDelayed(new Runnable() {
+            public void run()
+                {
+                    System.out.println("Parsing data, buttons disabled temporarily...");
+                    searchBtn.setEnabled(true);
+                    plannedRoadworksBtn.setEnabled(true);
+                    currentRoadworksBtn.setEnabled(true);
+                    currentIncidentsBtn.setEnabled(true);
+                    TextView searchTxt = findViewById(R.id.searchTxt);
+                    searchTxt.setEnabled(true);
+                }
+            }, 9000    //Specific time in milliseconds
+        );
 
-        // Set up the raw links to the graphical components
-        //rawDataDisplay = (TextView) findViewById(R.id.rawDataDisplay);
+        if (parser.currentIncidents.isEmpty()){
+                parser.startCurrentIncidentsProgress(); // start parsing current incidents first on create which when complete
+                // will parse planned roadworks and then finally current roadworks;
+            }
 
         plannedRoadworksBtn = (Button) findViewById(R.id.plannedRoadworksBtn);
         plannedRoadworksBtn.setOnClickListener(this);
@@ -62,10 +75,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         currentIncidentsBtn.setOnClickListener(this);
         TextView searchTxt = findViewById(R.id.searchTxt);
         searchBtn = (Button) findViewById(R.id.searchBtn);
-        // when search button pressed loop through the items array from parser and get all items matching search value using a list
+        // when search button pressed loop through the items array from our parser class and get all items matching search value using a list
         searchBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
                 System.out.println("Search: " + searchTxt.getText());
                 searchValue = searchTxt.getText().toString().toLowerCase();
                 searchedRoadworks.clear();
@@ -83,16 +97,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
                         System.out.println("Searched Tag: " + searchValue);
                         getItems("searchedRoadworks");
-
                     }
                 }
+            } catch (Exception e){
+                    System.out.println("Error: check search tag is not null - " + e);
+                }
             }
+
         });
     }
 
     @Override
     public void onClick(View v) {
-        Log.e("MyTag", "in onClick");
         int id = v.getId();
         switch (id) {
             case R.id.plannedRoadworksBtn:
@@ -105,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 getItems("currentIncidents");
                 break;
         }
-        Log.e("MyTag", "after startProgress");
     }
 
     public void getItems(String itemsToGet) {

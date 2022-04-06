@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".models.DetailedView"
+    android:id="@+id/constraintLayoutColour"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="57dp">
 
@@ -13,20 +14,22 @@
         android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:clickable="false"
         android:text="Title"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/detailedViewDescription"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
+        android:layout_width="683dp"
+        android:layout_height="47dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:clickable="false"
         android:text="Description"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedViewCategory" />
 
@@ -35,20 +38,22 @@
         android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:clickable="false"
         android:text="Link"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedViewDescription" />
 
     <TextView
         android:id="@+id/detailedViewPubDate"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
+        android:layout_width="683dp"
+        android:layout_height="55dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="12dp"
         android:clickable="false"
         android:text="Publication Date"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedViewLink" />
 
@@ -57,9 +62,10 @@
         android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="76dp"
         android:clickable="false"
         android:text="Longitude:"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedViewLink" />
 
@@ -68,9 +74,10 @@
         android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="112dp"
         android:clickable="false"
         android:text="Latitude:"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedViewLink" />
 
@@ -79,25 +86,12 @@
         android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:clickable="false"
         android:text="Category"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedViewTitle" />
-
-    <EditText
-        android:id="@+id/detailedViewTrafficScotlandTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="282dp"
-        android:layout_marginTop="1dp"
-        android:clickable="false"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:singleLine="true"
-        android:text="Traffic Scotland"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

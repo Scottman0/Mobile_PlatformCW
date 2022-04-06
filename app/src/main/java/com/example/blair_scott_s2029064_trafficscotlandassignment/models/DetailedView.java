@@ -55,7 +55,8 @@ public class DetailedView extends AppCompatActivity {
             daysRemaining = extras.getInt("daysRemaining");
         }
 
-        titleTxt.setText("Title: " + title);
+
+        ConstraintLayout constraint = (ConstraintLayout)findViewById(R.id.constraintLayoutColour);
 
         // get category name to display in view
         switch (category)
@@ -63,16 +64,44 @@ public class DetailedView extends AppCompatActivity {
             case "currentRoadworks":
                 categoryTxt.setText("Category: Current Roadworks");
                 descriptionTxt.setText("Description: " + detailedInfo);
+                if (daysRemaining < 3)
+                {
+                    constraint.setBackgroundColor(Color.parseColor("#00ff08"));
+                } else if (daysRemaining > 2 && daysRemaining < 7) {
+                    constraint.setBackgroundColor(Color.parseColor("#f2ac72"));
+                } else if (daysRemaining > 6) {
+                    constraint.setBackgroundColor(Color.parseColor("#fc746d"));
+                }
                 break;
             case "plannedRoadworks":
                 categoryTxt.setText("Category: Planned Roadworks");
                 descriptionTxt.setText("Description: " + detailedInfo);
+                if (daysRemaining < 3)
+                {
+                    constraint.setBackgroundColor(Color.parseColor("#00ff08"));
+                } else if (daysRemaining > 2 && daysRemaining < 7) {
+                    constraint.setBackgroundColor(Color.parseColor("#f2ac72"));
+                } else if (daysRemaining > 6) {
+                    constraint.setBackgroundColor(Color.parseColor("#fc746d"));
+                }
                 break;
             case "currentIncidents":
                 categoryTxt.setText("Category: Current Incidents");
                 descriptionTxt.setText("Description: " + description);
+                titleTxt.setTextColor(Color.BLACK);
+                descriptionTxt.setTextColor(Color.BLACK);
+                categoryTxt.setTextColor(Color.BLACK);
+                linkTxt.setTextColor(Color.BLACK);
+                latitudeTxt.setTextColor(Color.BLACK);
+                longitudeTxt.setTextColor(Color.BLACK);
+                pubDateTxt.setTextColor(Color.BLACK);
+
                 break;
         }
+
+
+
+
 
 
         linkTxt.setText("Link: " + link);
@@ -81,11 +110,12 @@ public class DetailedView extends AppCompatActivity {
         } else {
             pubDateTxt.setText("Published Date: " + pubDate);
         }
+        titleTxt.setText("Title: " + title);
         latitudeTxt.setText("Latitude: " + latitude);
         longitudeTxt.setText("Longitude: " + longitude);
         System.out.println(latitude);
         System.out.println(longitude);
-        System.out.println("Days: " + daysBetween);
+        System.out.println("Original Planned Amount of Days: " + daysBetween);
 
 
     }

@@ -1,3 +1,4 @@
+// Scott Blair (2022) -- Student ID: S2029064
 package com.example.blair_scott_s2029064_trafficscotlandassignment.models;
 
 //import com.example.blair_scott_s2029064_trafficscotlandassignment.models.MainActivity;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executors;
+
 import com.example.blair_scott_s2029064_trafficscotlandassignment.models.MainActivity;
 
 public class Parser extends AppCompatActivity {
@@ -29,6 +32,50 @@ public class Parser extends AppCompatActivity {
     boolean dataParsed = false;
     int currentUrl = 1; // value to store which URL we are parsing data from
 
+    String oldCurrentIncidents = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" +
+            "<rss version=\"2.0\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\">\n" +
+            "  <channel>\n" +
+            "    <title>Traffic Scotland - OLD Current Incidents</title>\n" +
+            "    <description>Current incidents on the road network e.g. accidents</description>\n" +
+            "    <link>https://trafficscotland.org/currentincidents/</link>\n" +
+            "    <language />\n" +
+            "    <copyright />\n" +
+            "    <managingEditor />\n" +
+            "    <webMaster />\n" +
+            "    <lastBuildDate>Wed, 06 Apr 2022 14:42:58 GMT</lastBuildDate>\n" +
+            "    <docs>https://trafficscotland.org/rss/</docs>\n" +
+            "    <rating />\n" +
+            "    <generator>Traffic Scotland | www.trafficscotland.org</generator>\n" +
+            "    <ttl>5</ttl>\n" +
+            "    <item>\n" +
+            "      <title>M8 Jct 15 - Jct 18 - Planned Roadworks</title>\n" +
+            "      <description>The M8 both Eastbound and Westbound between Junctions 15 and Junction 18 is currently restricted due to essential bridge repairs.  Motorists are advised to expect delays in the area.</description>\n" +
+            "      <link>http://tscot.org/01a13134</link>\n" +
+            "      <georss:point>55.8692771239109 -4.24135563418866</georss:point>\n" +
+            "      <author />\n" +
+            "      <comments />\n" +
+            "      <pubDate>Fri, 12 Mar 2021 20:53:52 GMT</pubDate>\n" +
+            "    </item>\n" +
+            "    <item>\n" +
+            "      <title>A737 Johnstone - Breakdown</title>\n" +
+            "      <description>All lanes restricted Northbound</description>\n" +
+            "      <link>http://tscot.org/01c316371</link>\n" +
+            "      <georss:point>55.8440105144569 -4.48990610367594</georss:point>\n" +
+            "      <author />\n" +
+            "      <comments />\n" +
+            "      <pubDate>Wed, 06 Apr 2022 11:34:15 GMT</pubDate>\n" +
+            "    </item>\n" +
+            "    <item>\n" +
+            "      <title>A720 A7 (Sheriffhall Rbt) - A68 (Millerhill Jct) - Queue</title>\n" +
+            "      <description>2 lanes restricted Westbound</description>\n" +
+            "      <link>http://tscot.org/01c316376</link>\n" +
+            "      <georss:point>55.9107612785275 -3.06869855380554</georss:point>\n" +
+            "      <author />\n" +
+            "      <comments />\n" +
+            "      <pubDate>Wed, 06 Apr 2022 14:42:58 GMT</pubDate>\n" +
+            "    </item>\n" +
+            "  </channel>\n" +
+            "</rss>";
 
     List<Item> items = new ArrayList<Item>();
     Item item = new Item();
@@ -60,7 +107,6 @@ public class Parser extends AppCompatActivity {
         public Task(String aurl) {
             url = aurl;
         }
-
         @Override
         public void run() {
             URL aurl;
@@ -104,6 +150,8 @@ public class Parser extends AppCompatActivity {
                 in.close();
             } catch (IOException ae) {
                 Log.e("MyTag", "ioexception in run");
+                System.out.println("Parsing old data...");
+                parseItems(oldCurrentIncidents, "currentIncidents"); // parse old record of current incidents if no internet access or data fails to parse, (doesn't work with planned/current roadworks due to the description)
             }
             Parser.this.runOnUiThread(new Runnable() {
                 public void run() {
@@ -133,7 +181,6 @@ public class Parser extends AppCompatActivity {
                         } else if (xpp.getName().equalsIgnoreCase("title") && xpp.getDepth() == 4) {
                             String temp = xpp.nextText();
                             item.setTitle(temp);
-                            //Log.e("MyTag", "Title is " + temp);
                         } else if (xpp.getName().equalsIgnoreCase("description") && xpp.getDepth() == 4) {
                             String temp = xpp.nextText();
                             item.setDescription(temp);
@@ -147,7 +194,6 @@ public class Parser extends AppCompatActivity {
                         } else if (xpp.getName().equalsIgnoreCase("pubDate") && xpp.getDepth() == 4) {
                             String temp = xpp.nextText();
                             item.setPubDate(temp);
-                            //Log.e("MyTag", "Pub Date is " + temp);
                         }
                         break;
                     case XmlPullParser.END_TAG:

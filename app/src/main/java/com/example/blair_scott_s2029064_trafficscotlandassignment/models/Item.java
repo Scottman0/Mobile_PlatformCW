@@ -180,7 +180,6 @@ public class Item {
             e.printStackTrace();
         }
 
-
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;

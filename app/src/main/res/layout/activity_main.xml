@@ -17,6 +17,7 @@
                 android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:hint="Search"
+                android:enabled="false"
                 android:singleLine="true" />
 
             <Button
@@ -24,6 +25,7 @@
                 android:layout_width="127dp"
                 android:layout_height="80dp"
                 android:text="Search"
+                android:enabled="false"
                 android:visibility="visible" />
 
         </LinearLayout>
@@ -31,18 +33,21 @@
             android:id="@+id/currentRoadworksBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="Current Roadworks" />
 
         <Button
             android:id="@+id/plannedRoadworksBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="Planned Roadworks" />
 
         <Button
             android:id="@+id/currentIncidentsBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:text="Current Incidents" />
 
         <androidx.recyclerview.widget.RecyclerView
