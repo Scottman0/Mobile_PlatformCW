@@ -116,11 +116,6 @@ public class DetailedView extends AppCompatActivity {
                 break;
         }
 
-
-
-
-
-
         linkTxt.setText("Link: " + link);
         if (startDate != null & endDate != null) {
             pubDateTxt.setText("Dates: " + startDate + " to " + endDate + "\n - days remaining (approximate): " + daysRemaining);

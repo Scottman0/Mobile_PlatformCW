@@ -32,6 +32,7 @@ public class Parser extends AppCompatActivity {
     boolean dataParsed = false;
     int currentUrl = 1; // value to store which URL we are parsing data from
 
+    // store a local outdated copy of current incidents to use when no internet connection is available
     String oldCurrentIncidents = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n" +
             "<rss version=\"2.0\" xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\">\n" +
             "  <channel>\n" +
